@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Eduardo Campos | Nutricionista & Treinador</title>
+    <style>
+        :root {
+            --primary-color: #062850; 
+            --secondary-color: #f0f0f0; 
+            --text-color: #17407c;
+            --button-hover: #10569c;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, var(--secondary-color), white);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            background-color: var(--secondary-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .headline-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: var(--button-hover);
+        }
+
+        .next-button {
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .next-button:hover {
+            background-color: var(--button-hover);
+        }
+
+        .page {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .muscle-groups {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 10px; 
+            margin-top: 15px;
+        }
+
+        .muscle-groups label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+        }
+
+        .muscle-groups img {
+            width: 55px; 
+            height: 55px;
+            margin-right: 5px; 
+        }
+
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="imagens/logo.png" alt="Logo Lucas Eduardo Campos" class="logo">
+
+        <!-- Página 1 -->
+        <div class="page active" id="page1">
+            <h2 class="headline">Vamos Começar!</h2>
+            <p class="headline-subtitle">Responda essas perguntas para personalizar seu treino.</p>
+
+            <label>1 - Você já treina musculação?</label>
+            <select id="question1" required>
+                <option value="">Selecione...</option>
+                <option value="sim">Sim</option>
+                <option value="não">Não</option>
+            </select>
+
+            <label>2 - Há quanto tempo você treina?</label>
+            <select id="question2" required>
+                <option value="">Selecione...</option>
+                <option value="Nenhum">Nenhum</option>
+                <option value="1semana">1 semana</option>
+                <option value="1-3meses">1-3 meses</option>
+                <option value="3-8meses">3-8 meses</option>
+                <option value="1-2anos">1-2 anos</option>
+                <option value="2+anos">Mais de 2 anos</option>
+            </select>
+
+            <button class="next-button" onclick="goToPage(2)">Próxima Página</button>
+        </div>
+
+        <!-- Página 2 -->
+        <div class="page" id="page2">
+            <h2 class="headline">Estamos Quase Lá!</h2>
+            <p class="headline-subtitle">Mais algumas perguntas rápidas.</p>
+
+            <label>1 - Quantas vezes você treina por semana?</label>
+            <select id="question3" required>
+                <option value="">Selecione...</option>
+                <option value="Nenhuma">Nenhuma</option>
+                <option value="1x">1x</option>
+                <option value="2-3x">2-3x</option>
+                <option value="3-5x">3-5x</option>
+                <option value="5-7x">5-7x</option>
+            </select>
+
+            <label>2 - Qual é o seu treino preferido?</label>
+            <select id="question4" required>
+                <option value="">Selecione...</option>
+                <option value="perna">Perna</option>
+                <option value="braços">Braços</option>
+                <option value="costas">Costas</option>
+                <option value="ombro">Ombro</option>
+                <option value="peitoral">Peitoral</option>
+            </select>
+
+            <button class="next-button" onclick="goToPage(3)">Próxima Página</button>
+        </div>
+
+        <!-- Página 3 -->
+        <div class="page" id="page3">
+            <h2 class="headline">Última Pergunta!</h2>
+            <p class="headline-subtitle">Nos diga como tem sido sua experiência.</p>
+
+            <label>1 - Você já teve resultados significativos na academia?</label>
+            <select id="question5" required>
+                <option value="">Selecione...</option>
+                <option value="sim">Sim</option>
+                <option value="não">Não</option>
+            </select>
+
+            <label>2 - Você sente que está estagnado nos resultados?</label>
+            <select id="question6" required>
+                <option value="">Selecione...</option>
+                <option value="sim">Sim</option>
+                <option value="não">Não</option>
+            </select>
+
+            <button class="next-button" onclick="goToPage(4)">Próxima Página</button>
+        </div>
+
+        <!-- Página 4: Seleção de Grupos Musculares -->
+        <div class="page" id="page4">
+            <h2 class="headline">Escolha DOIS grupamentos musculares que você quer desenvolver com mais ênfase:</h2>
+            <div class="muscle-groups">
+                <label>
+                    <img src="imagens/peitoral.webp" alt="Peitoral">
+                    <input type="checkbox" name="muscleGroups" value="peitoral" class="muscle-checkbox">Peitoral
+                </label>
+                <label>
+                    <img src="imagens/costas.webp" alt="Costas">
+                    <input type="checkbox" name="muscleGroups" value="costas" class="muscle-checkbox">Costas
+                </label>
+                <label>
+                    <img src="imagens/braços.webp" alt="Braços">
+                    <input type="checkbox" name="muscleGroups" value="braços" class="muscle-checkbox">Braços
+                </label>
+                <label>
+                    <img src="imagens/ombros.webp" alt="Ombros">
+                    <input type="checkbox" name="muscleGroups" value="ombros" class="muscle-checkbox">Ombros
+                </label>
+                <label>
+                    <img src="imagens/pernas.webp" alt="Pernas">
+                    <input type="checkbox" name="muscleGroups" value="pernas" class="muscle-checkbox">Pernas
+                </label> 
+            </div>
+            <button class="next-button" onclick="submitMuscleSelection()">Enviar</button>
+        </div>
+    </div>
+    <script>
+        let currentPage = 1;
+
+        // Objeto de combinações para URLs
+        const combinationsToUrls = {
+            "costas,peitoral": "https://www.lucaseducampos.com.br/peitoecostas1",
+            "braços,peitoral": "https://www.lucaseducampos.com.br/peitoebraco1",
+            "ombros,peitoral": "https://www.lucaseducampos.com.br/peitoeombro1",
+            "peitoral,pernas": "https://www.lucaseducampos.com.br/pernaepeito1",
+            "costas,ombros": "https://www.lucaseducampos.com.br/costaseombro1",
+            "costas,pernas": "https://www.lucaseducampos.com.br/costaseperna1",
+            "braços,ombros": "https://www.lucaseducampos.com.br/bracoeombro1",
+            "braços,pernas": "https://www.lucaseducampos.com.br/pernaebraco1",
+            "braços,costas": "https://www.lucaseducampos.com.br/costasebraco1",
+            "ombros,pernas": "https://www.lucaseducampos.com.br/pernaeombro1"
+        };
+
+        // Função para avançar para outra página
+        function goToPage(pageNumber) {
+            const currentPageElement = document.getElementById(`page${currentPage}`);
+            const nextPageElement = document.getElementById(`page${pageNumber}`);
+
+            // Valida se todas as perguntas foram respondidas
+            if (!validatePage(currentPageElement)) {
+                alert("Por favor, responda todas as perguntas antes de continuar.");
+                return;
+            }
+
+            // Transição para a próxima página
+            currentPageElement.style.opacity = 0;
+            setTimeout(() => {
+                currentPageElement.classList.remove('active');
+                nextPageElement.classList.add('active');
+                nextPageElement.style.opacity = 1;
+                currentPage = pageNumber;
+            }, 500);
+        }
+
+        // Valida se todas as perguntas foram respondidas na página atual
+        function validatePage(page) {
+            const inputs = page.querySelectorAll('select');
+            for (const input of inputs) {
+                if (!input.value) return false; // Retorna false se algo não foi respondido
+            }
+            return true;
+        }
+
+        // Submete a seleção de grupos musculares
+        function submitMuscleSelection() {
+            // Captura os valores selecionados
+            const selectedMuscles = Array.from(document.querySelectorAll('.muscle-checkbox:checked'))
+                .map(input => input.value.trim().toLowerCase());
+
+            if (selectedMuscles.length !== 2) {
+                alert("Por favor, selecione exatamente 2 grupos musculares.");
+                return;
+            }
+
+            // Gera a chave sem considerar a ordem
+            const key = selectedMuscles.sort().join(',');
+
+            console.log("Selecionados:", selectedMuscles); // Log para depuração
+            console.log("Chave Gerada:", key); // Log para verificar a chave
+
+            // Verifica se a chave existe no objeto
+            const redirectUrl = combinationsToUrls[key];
+            if (redirectUrl) {
+                window.location.href = redirectUrl;
+            } else {
+                console.error("Combinação não encontrada:", key);
+                alert("Combinação não encontrada. Por favor, tente novamente.");
+            }
+        }
+    </script>
+</body>
+</html>
